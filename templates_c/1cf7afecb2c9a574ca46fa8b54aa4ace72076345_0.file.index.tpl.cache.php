@@ -1,32 +1,41 @@
 <?php
-/* Smarty version 4.1.1, created on 2022-07-09 19:30:04
-  from 'C:\wampp\apache2\htdocs\SmartLogistics\view\index.tpl' */
+/* Smarty version 4.1.1, created on 2022-07-09 19:41:14
+  from 'C:\wampp\apache2\htdocs\smartLogistics\view\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.1',
-  'unifunc' => 'content_62c958ac6ea061_60211030',
+  'unifunc' => 'content_62c95b4ade10f5_36249581',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'bb21a6c4543dc828f86d68f8b2b3fbe0c340ec30' => 
+    '1cf7afecb2c9a574ca46fa8b54aa4ace72076345' => 
     array (
-      0 => 'C:\\wampp\\apache2\\htdocs\\SmartLogistics\\view\\index.tpl',
+      0 => 'C:\\wampp\\apache2\\htdocs\\smartLogistics\\view\\index.tpl',
       1 => 1655360550,
       2 => 'file',
     ),
   ),
-  'cache_lifetime' => 120,
-),true)) {
-function content_62c958ac6ea061_60211030 (Smarty_Internal_Template $_smarty_tpl) {
-?><html>
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_62c95b4ade10f5_36249581 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '122707199862c95b4add9388_97302569';
+?>
+<html>
 <head>
-	<title>Smart Logistics</title>
+	<title><?php echo $_smarty_tpl->tpl_vars['title']->value;?>
+</title>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="./css/style.css">
 	<link rel="stylesheet" href="./library/jquery-ui-1.13.1.custom/jquery-ui.css">
-  	<script src="./library/jquery/jquery-3.6.0.js"></script>
-	<script src="./library/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
+  	<?php echo '<script'; ?>
+ src="./library/jquery/jquery-3.6.0.js"><?php echo '</script'; ?>
+>
+	<?php echo '<script'; ?>
+ src="./library/jquery-ui-1.13.1.custom/jquery-ui.js"><?php echo '</script'; ?>
+>
 
 </head>
 <body>
