@@ -10,7 +10,7 @@
  */
 
 
-$_SETUP_DIR = "/SmartLogistics";   // 사용자 설정
+$_SETUP_DIR = "/smartLogistics";   // 사용자 설정
 $_UPLOAD_DIR = "/upload";   // 업로드 경로
 $_LIMIT_UPLOAD_SIZE = 39943040;
 
