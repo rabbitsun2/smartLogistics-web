@@ -1,9 +1,9 @@
 {include file="header.tpl"}
-				<h3 class="sub_title">생산/출고 - 출고 작업</h3>
+				<h3 class="sub_title">물류/출고 - 출고 작업</h3>
 				<hr class="sub_hr">
 <!-- 검색 영역 -->
 {foreach $warehouse_rows as $w_item}
-<form action="factory?func=output&status=w_ok&id={$w_item.id}" method="POST">
+<form action="logistics?func=output&status=w_ok&id={$w_item.id}" method="POST">
 <input type="hidden" name="w_log_id" value="{$w_item.id}">
 <input type="hidden" name="prev_w_id" value="{$w_item.prev_w_id}">
 <table class="output_release_tbl">

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.1, created on 2022-07-03 08:16:51
+/* Smarty version 4.1.1, created on 2022-07-09 19:21:09
   from 'C:\wampp\apache2\htdocs\SmartLogistics\view\main\mgt\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.1',
-  'unifunc' => 'content_62c0d1e3eaa224_35324575',
+  'unifunc' => 'content_62c95695d2ebc9_19720046',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a2f3307b19522a19cc7962e236f1be2b58d44099' => 
     array (
       0 => 'C:\\wampp\\apache2\\htdocs\\SmartLogistics\\view\\main\\mgt\\header.tpl',
-      1 => 1656803806,
+      1 => 1657362048,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_62c0d1e3eaa224_35324575 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '107733469062c0d1e3cbcbc6_07337343';
+function content_62c95695d2ebc9_19720046 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '181490823062c95695cdb248_01077849';
 ?>
 <html>
 <head>
@@ -93,16 +93,16 @@ $_smarty_tpl->compiled->nocache_hash = '107733469062c0d1e3cbcbc6_07337343';
 			<td class="sub_menu">
 				<ul>
 					<li>
-						<div class="sub_title">1. 생산</div>
+						<div class="sub_title">1. 물류</div>
 						<ul>
 							<li>
 								<div class="sub_m1">
-									<a href="factory?func=input">입고</a>
+									<a href="logistics?func=input">입고</a>
 								</div>
 							</li>
 							<li>
 								<div class="sub_m1">
-									<a href="factory?func=output">출고</a>
+									<a href="logistics?func=output">출고</a>
 								</div>
 							</li>
 						</ul>

@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.1.1, created on 2022-07-05 19:39:17
+/* Smarty version 4.1.1, created on 2022-07-09 19:30:04
   from 'C:\wampp\apache2\htdocs\SmartLogistics\view\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.1',
-  'unifunc' => 'content_62c414d5691b59_34974628',
+  'unifunc' => 'content_62c958ac6ea061_60211030',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -18,7 +18,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 120,
 ),true)) {
-function content_62c414d5691b59_34974628 (Smarty_Internal_Template $_smarty_tpl) {
+function content_62c958ac6ea061_60211030 (Smarty_Internal_Template $_smarty_tpl) {
 ?><html>
 <head>
 	<title>Smart Logistics</title>

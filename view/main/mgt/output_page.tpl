@@ -1,8 +1,8 @@
 {include file="header.tpl"}
-				<h3 class="sub_title">생산/출고</h3>
+				<h3 class="sub_title">물류/출고</h3>
 				<hr class="sub_hr">
 <!-- 검색 영역 -->
-<form action="factory?func=output" method="GET">
+<form action="logistics?func=output" method="GET">
 <input type="hidden" name="func" value="output">
 <table class="output_search_tbl">
 	<tr>
@@ -70,7 +70,7 @@
 				{$w_item.current_cnt}
 			</td>
 			<td>
-				<a href="factory?func=output&status=release&id={$w_item.id}">출고</a>
+				<a href="logistics?func=output&status=release&id={$w_item.id}">출고</a>
 			</td>
 		</tr>
 		{/foreach}

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.1, created on 2022-06-25 20:10:37
+/* Smarty version 4.1.1, created on 2022-07-09 19:22:56
   from 'C:\wampp\apache2\htdocs\SmartLogistics\view\main\mgt\input_search.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.1',
-  'unifunc' => 'content_62b6ed2de9ffb7_77686518',
+  'unifunc' => 'content_62c957000c61d3_07056184',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '48a142340a37c1764bf9442a52d994f60fa2e0db' => 
     array (
       0 => 'C:\\wampp\\apache2\\htdocs\\SmartLogistics\\view\\main\\mgt\\input_search.tpl',
-      1 => 1655338686,
+      1 => 1657362120,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_62b6ed2de9ffb7_77686518 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '13427578662b6ed2de8c305_02585554';
+function content_62c957000c61d3_07056184 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '118496904562c957000c1bd9_94891400';
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -49,7 +49,7 @@ $_smarty_tpl->compiled->nocache_hash = '13427578662b6ed2de8c305_02585554';
     <h3 class="sub_title">품목 검색</h3>
     <hr class="sub_hr">
     <br>
-    <form action="factory" method="GET">
+    <form action="logistics" method="GET">
         <input type="hidden" name="func" value="input">
         <input type="hidden" name="search" value="product">
 

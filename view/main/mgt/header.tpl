@@ -55,16 +55,16 @@
 			<td class="sub_menu">
 				<ul>
 					<li>
-						<div class="sub_title">1. 생산</div>
+						<div class="sub_title">1. 물류</div>
 						<ul>
 							<li>
 								<div class="sub_m1">
-									<a href="factory?func=input">입고</a>
+									<a href="logistics?func=input">입고</a>
 								</div>
 							</li>
 							<li>
 								<div class="sub_m1">
-									<a href="factory?func=output">출고</a>
+									<a href="logistics?func=output">출고</a>
 								</div>
 							</li>
 						</ul>

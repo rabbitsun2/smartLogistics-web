@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.1, created on 2022-06-27 18:09:05
+/* Smarty version 4.1.1, created on 2022-07-09 19:25:03
   from 'C:\wampp\apache2\htdocs\SmartLogistics\view\main\mgt\output_page.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.1',
-  'unifunc' => 'content_62b973b1866624_80729358',
+  'unifunc' => 'content_62c9577fb83c31_42297273',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '08142fc08e35024ff2d656dd90f4721e10e927e6' => 
     array (
       0 => 'C:\\wampp\\apache2\\htdocs\\SmartLogistics\\view\\main\\mgt\\output_page.tpl',
-      1 => 1656320942,
+      1 => 1657362299,
       2 => 'file',
     ),
   ),
@@ -23,14 +23,14 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_62b973b1866624_80729358 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '103448230762b973b185b411_77560213';
+function content_62c9577fb83c31_42297273 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '16337031562c9577fb75880_55883556';
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
-				<h3 class="sub_title">생산/출고</h3>
+				<h3 class="sub_title">물류/출고</h3>
 				<hr class="sub_hr">
 <!-- 검색 영역 -->
-<form action="factory?func=output" method="GET">
+<form action="logistics?func=output" method="GET">
 <input type="hidden" name="func" value="output">
 <table class="output_search_tbl">
 	<tr>
@@ -112,7 +112,7 @@ $_smarty_tpl->tpl_vars['w_item']->do_else = false;
 
 			</td>
 			<td>
-				<a href="factory?func=output&status=release&id=<?php echo $_smarty_tpl->tpl_vars['w_item']->value['id'];?>
+				<a href="logistics?func=output&status=release&id=<?php echo $_smarty_tpl->tpl_vars['w_item']->value['id'];?>
 ">출고</a>
 			</td>
 		</tr>

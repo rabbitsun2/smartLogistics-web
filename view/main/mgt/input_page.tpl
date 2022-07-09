@@ -16,16 +16,16 @@
 	    	// window.name = "부모창 이름";
 			window.name = "parentForm";
 			// window.open("open할 window", "자식창 이름", "팝업창 옵션");
-			openWin = window.open("factory?func=input&search=product",
+			openWin = window.open("logistics?func=input&search=product",
 		        "childForm", "width=" + popupWidth + ", height=" + popupHeight + 
 				"left="+ popupX + ", top=" + popupY + ", resizable = no, scrollbars = no");
 		}
 	</script>
 
-				<h3 class="sub_title">생산/입고</h3>
+				<h3 class="sub_title">물류/입고</h3>
 				<hr class="sub_hr">
 				<br>
-				<form action="factory?func=input" method="POST">
+				<form action="logistics?func=input" method="POST">
 				<input type="hidden" name="func" value="input">
 				<input type="hidden" name="srtype" value="submit">
 				<div class="input_center">

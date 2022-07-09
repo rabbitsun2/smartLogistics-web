@@ -58,45 +58,45 @@ class PortalController extends Controller {
 
     private function loadController(){
         
-        $factoryController = new FactoryController();
+        $logisticsController = new LogisticsController();
         $productController = new ProductController();
         $projectController = new ProjectController();
         $configController = new ConfigController();
 
         // Controller 루트 경로 셋팅
-        $factoryController->setRootDir( $this->getRootDir() );
+        $logisticsController->setRootDir( $this->getRootDir() );
         $productController->setRootDir( $this->getRootDir() );
         $projectController->setRootDir( $this->getRootDir() );
         $configController->setRootDir( $this->getRootDir() );
         
         // Controller 스마티 셋팅
-        $factoryController->setSmarty( $this->getSmarty() );
+        $logisticsController->setSmarty( $this->getSmarty() );
         $productController->setSmarty( $this->getSmarty() );
         $projectController->setSmarty( $this->getSmarty() );
         $configController->setSmarty( $this->getSmarty() );
 
         // DB 셋팅
-        $factoryController->setConn( $this->getConn() );
+        $logisticsController->setConn( $this->getConn() );
         $productController->setConn( $this->getConn() );
         $projectController->setConn( $this->getConn() );
         $configController->setConn( $this->getConn() );
 
         // 업로드 경로 셋팅
-        $factoryController->setUploadDir( $this->getUploadDir() );
+        $logisticsController->setUploadDir( $this->getUploadDir() );
         $productController->setUploadDir( $this->getUploadDir() );
         $projectController->setUploadDir( $this->getUploadDir() );
         $configController->setUploadDir( $this->getUploadDir() );
 
         // 업로드 크기 제한 설정
-        $factoryController->setUploadSize( $this->getUploadSize() );
+        $logisticsController->setUploadSize( $this->getUploadSize() );
         $productController->setUploadSize( $this->getUploadSize() );
         $projectController->setUploadSize( $this->getUploadSize() );
         $configController->setUploadSize( $this->getUploadSize() );
 
         // 경로 설정
-        $factoryController->setRootRoute( $this->getRootRoute() );
-        $factoryController->setSecondRoute( $this->getSecondRoute() );
-        $factoryController->setThirdRoute( $this->getThirdRoute() );
+        $logisticsController->setRootRoute( $this->getRootRoute() );
+        $logisticsController->setSecondRoute( $this->getSecondRoute() );
+        $logisticsController->setThirdRoute( $this->getThirdRoute() );
 
         $productController->setRootRoute( $this->getRootRoute() );
         $productController->setSecondRoute( $this->getSecondRoute() );
@@ -110,7 +110,7 @@ class PortalController extends Controller {
         $configController->setSecondRoute( $this->getSecondRoute() );
         $configController->setThirdRoute( $this->getThirdRoute() );
 
-        $this->factoryController = $factoryController;
+        $this->logisticsController = $logisticsController;
         $this->productController = $productController;
         $this->projectController = $projectController;
         $this->configController = $configController;
@@ -184,7 +184,7 @@ class PortalController extends Controller {
         
     }
 
-    public function factory(){
+    public function logistics(){
 
         $this->loadController();
         $this->templateDir();
@@ -198,13 +198,13 @@ class PortalController extends Controller {
             if ( !isset($_GET['search']) && 
                 !isset($_POST['srtype']) )
             {
-                $this->factoryController->input();
+                $this->logisticsController->input();
             }
             // 품목 코드 찾기
             else if ( isset($_GET['search']) &&
                      strcmp($_GET['search'], 'product') === 0 &&
                      !isset($_GET['keyword']) ){
-                $this->factoryController->input_search();
+                $this->logisticsController->input_search();
             }
             // 품목 코드 검색 결과 출력
             else if ( isset($_GET['search']) &&
@@ -221,7 +221,7 @@ class PortalController extends Controller {
 
                 }
 
-                $this->factoryController->input_search_result( $pageCri, $_GET['keyword'] );
+                $this->logisticsController->input_search_result( $pageCri, $_GET['keyword'] );
             }
             // 입고 처리 프로세스
             else if ( isset( $_POST['srtype'] ) &&
@@ -263,7 +263,7 @@ class PortalController extends Controller {
 
                 //print_r($warehouseVO);
 
-                $this->factoryController->input_submit_ok($warehouseVO);
+                $this->logisticsController->input_submit_ok($warehouseVO);
                 
             }
 
@@ -286,7 +286,7 @@ class PortalController extends Controller {
 
                 }
 
-                $this->factoryController->output($pageCri);
+                $this->logisticsController->output($pageCri);
                 
             }
             // 재고 현황 키워드 검색
@@ -304,7 +304,7 @@ class PortalController extends Controller {
 
                 }
 
-                $this->factoryController->output_search_result($pageCri, $keyword);
+                $this->logisticsController->output_search_result($pageCri, $keyword);
                 
             }
             // 출고 입력 페이지
@@ -312,7 +312,7 @@ class PortalController extends Controller {
                     strcmp($_GET['status'], "release") === 0 &&
                      isset($_GET['id'])) {
                 
-                $this->factoryController->output_release();
+                $this->logisticsController->output_release();
 
             }
             
@@ -336,7 +336,7 @@ class PortalController extends Controller {
                 $warehouseLogVo->setIp(Network::get_client_ip());
 
 
-                $this->factoryController->output_w_ok($warehouseLogVo);
+                $this->logisticsController->output_w_ok($warehouseLogVo);
 
             }
             

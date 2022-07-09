@@ -65,7 +65,7 @@ include $_ROOT_DIR . '/include/DAO.php';
 include $_ROOT_DIR . "/controller/Portal/ConfigController.php";
 include $_ROOT_DIR . "/controller/Portal/ProjectController.php";
 include $_ROOT_DIR . "/controller/Portal/ProductController.php";
-include $_ROOT_DIR . "/controller/Portal/FactoryController.php";
+include $_ROOT_DIR . "/controller/Portal/LogisticsController.php";
 include $_ROOT_DIR . "/controller/EmployeeController.php";
 include $_ROOT_DIR . "/controller/PortalController.php";
 include $_ROOT_DIR . "/controller/HomeController.php";
@@ -198,10 +198,10 @@ if ( strcmp($_ROOT_ROUTE, "home") !== 0 ){
 
                         break;
 
-                    case "factory":
+                    case "logistics":
 
                         if ( isset( $_GET['func'] ) ){
-                            $portalController->factory( );
+                            $portalController->logistics( );
                         }
 
                         break;

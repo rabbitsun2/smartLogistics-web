@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.1, created on 2022-07-03 10:32:36
+/* Smarty version 4.1.1, created on 2022-07-09 19:23:46
   from 'C:\wampp\apache2\htdocs\SmartLogistics\view\main\mgt\input_page.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.1',
-  'unifunc' => 'content_62c0f1b4a1bed1_82765514',
+  'unifunc' => 'content_62c95732cbd671_43835921',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '54bd195db595c2982fa18bc6ba4ef5ddc0a11edc' => 
     array (
       0 => 'C:\\wampp\\apache2\\htdocs\\SmartLogistics\\view\\main\\mgt\\input_page.tpl',
-      1 => 1656811950,
+      1 => 1657362204,
       2 => 'file',
     ),
   ),
@@ -22,8 +22,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_62c0f1b4a1bed1_82765514 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '212033378662c0f1b4a12461_63494841';
+function content_62c95732cbd671_43835921 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '21826700062c95732cb4143_79454253';
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
@@ -44,17 +44,17 @@ $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_sm
 	    	// window.name = "부모창 이름";
 			window.name = "parentForm";
 			// window.open("open할 window", "자식창 이름", "팝업창 옵션");
-			openWin = window.open("factory?func=input&search=product",
+			openWin = window.open("logistics?func=input&search=product",
 		        "childForm", "width=" + popupWidth + ", height=" + popupHeight + 
 				"left="+ popupX + ", top=" + popupY + ", resizable = no, scrollbars = no");
 		}
 	<?php echo '</script'; ?>
 >
 
-				<h3 class="sub_title">생산/입고</h3>
+				<h3 class="sub_title">물류/입고</h3>
 				<hr class="sub_hr">
 				<br>
-				<form action="factory?func=input" method="POST">
+				<form action="logistics?func=input" method="POST">
 				<input type="hidden" name="func" value="input">
 				<input type="hidden" name="srtype" value="submit">
 				<div class="input_center">

@@ -18,7 +18,7 @@
     <h3 class="sub_title">품목 검색</h3>
     <hr class="sub_hr">
     <br>
-    <form action="factory" method="GET">
+    <form action="logistics" method="GET">
         <input type="hidden" name="func" value="input">
         <input type="hidden" name="search" value="product">
 

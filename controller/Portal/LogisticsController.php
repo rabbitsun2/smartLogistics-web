@@ -3,13 +3,13 @@
  * Created Date: 2022-06-10 (Fri)
  * Author: Doyun Jung (정도윤) / rabbit.white@daum.net
  * Subject: Controller
- * Filename: FactoryController.php
+ * Filename: LogisticsController.php
  * Description:
  * - 1. 서비스 추가(품목 코드 찾기), 정도윤(Doyun Jung), 2022-06-12(Sun)
  * - 2. 검색(키워드) 반영, 정도윤, 2022-06-27(Mon)
  */
 
-class FactoryController extends Controller {
+class LogisticsController extends Controller {
 
     
     private $product_service;
@@ -52,7 +52,7 @@ class FactoryController extends Controller {
         $smarty = $this->getSmarty();
         $smarty->clearAllCache();
         
-        $smarty->assign("title", "생산/입고:::Smart Logistics");
+        $smarty->assign("title", "물류/입고:::Smart Logistics");
         $smarty->assign("session_emp_no", $_SESSION['emp_no']);
         $smarty->assign("session_auth_name", $_SESSION['auth_name']);
         $smarty->assign("session_usrname", $_SESSION['usrname']);
@@ -235,7 +235,7 @@ class FactoryController extends Controller {
         $smarty->assign("warehouseLogList", $warehouseLogRows);
         $smarty->assign("pagingObj", $pagingObj);
         $smarty->assign("fn", $var_fn);
-        $smarty->assign("title", "생산/출고:::Smart Logistics");
+        $smarty->assign("title", "물류/출고:::Smart Logistics");
         $smarty->assign("session_emp_no", $_SESSION['emp_no']);
         $smarty->assign("session_auth_name", $_SESSION['auth_name']);
         $smarty->assign("session_usrname", $_SESSION['usrname']);
@@ -289,7 +289,7 @@ class FactoryController extends Controller {
         $smarty->assign("warehouseLogList", $warehouseLogRows);
         $smarty->assign("pagingObj", $pagingObj);
         $smarty->assign("fn", $var_fn);
-        $smarty->assign("title", "생산/출고:::Smart Logistics");
+        $smarty->assign("title", "물류/출고:::Smart Logistics");
         $smarty->assign("session_emp_no", $_SESSION['emp_no']);
         $smarty->assign("session_auth_name", $_SESSION['auth_name']);
         $smarty->assign("session_usrname", $_SESSION['usrname']);
@@ -313,7 +313,7 @@ class FactoryController extends Controller {
 
         $warehouse_rows = $this->warehouse_service->selectOneWarehouseLog($warehouseLogVo);
         
-        $title = "생산/출고 - " . $warehouse_rows[0]["w_id"] .  
+        $title = "물류/출고 - " . $warehouse_rows[0]["w_id"] .  
                 "(" . $warehouse_rows[0]["product_name"] . "):::Smart Logistics";
 
         $smarty->assign("warehouse_rows", $warehouse_rows);
@@ -363,7 +363,7 @@ class FactoryController extends Controller {
             
             echo "<script>";
             echo "alert ('성공적으로 등록되었습니다.');";
-            echo "location.replace('../portal/factory?func=output');";
+            echo "location.replace('../portal/logistics?func=output');";
             echo "</script>";
             exit;
 
