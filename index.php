@@ -34,6 +34,7 @@ include $_ROOT_DIR . '/framework/smarty/libs/Smarty.class.php';
 include $_ROOT_DIR . '/model/PageCriteria.php';
 include $_ROOT_DIR . '/model/ProjectFileVO.php';
 include $_ROOT_DIR . '/model/ProjectVO.php';
+include $_ROOT_DIR . '/model/ProductFileVO.php';
 include $_ROOT_DIR . '/model/ProductVO.php';
 include $_ROOT_DIR . '/model/EmployeeVO.php';
 include $_ROOT_DIR . '/model/WarehouseVO.php';

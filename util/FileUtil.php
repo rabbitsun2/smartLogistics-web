@@ -8,6 +8,7 @@
  * Description:
  * 1. 파일 크기 단위로 변환 구현, 정도윤, 2022-07-03 (Sun).
  * 2. 파일 업로드 확장자 방어, 정도윤, 2022-07-03 (Sun).
+ * 3. 파일 업로드 사진파일만 허용, 정도윤, 2022-07-10 (Sun).
 */
 
 class FileUtil{
@@ -45,6 +46,31 @@ class FileUtil{
             return 0;
         }else{
             return 1;
+        }
+    
+    }
+
+    public static function checkFileExtAllowPhoto($file_ext){
+
+        $status = -1;
+
+        $allow_ext = array("jpg", "png", "gif", "jpeg", "bmp", 
+                           "JPG", "PNG", "GIF", "JPEG", "BMP");
+
+        for ( $i = 0; $i < count($allow_ext) &&
+                      $status === -1; $i++ ){
+            
+            if ( strcmp( $file_ext, $allow_ext[$i] ) === 0 ){
+                $status = 1;
+                //echo "참";
+            }
+
+        }
+
+        if ($status === 1){
+            return 1;
+        }else{
+            return 0;
         }
     
     }

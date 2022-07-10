@@ -26,6 +26,9 @@ interface ProjectService{
     public function updateProject($projectVO);
     public function deleteFindUUIDProjectFile($projectFileVO);
 
+    public function selectAllProjectCountFind($projectVO);
+    public function selectPagingProjectFind($startNum, $endNum, $projectVO);
+
 }
 
 ?>

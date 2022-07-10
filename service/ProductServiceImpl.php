@@ -69,6 +69,36 @@ class ProductServiceImpl implements ProductService{
         $this->loadDAO();
         return $this->productDAO->selectPagingProduct($startNum, $endNum);
     }
+    
+    public function selectFullProductQry($productVO){
+        $this->loadDAO();
+        return $this->productDAO->selectFullProductQry($productVO);
+    }
+
+    public function insertProduct($productVO){
+        $this->loadDAO();
+        return $this->productDAO->insertProduct($productVO);
+    }
+
+    public function insertProductFile($productFileVO){
+        $this->loadDAO();
+        return $this->productDAO->insertProductFile($productFileVO);
+    }
+
+    public function selectFindUUIDProductFile($productFileVO){
+        $this->loadDAO();
+        return $this->productDAO->selectFindUUIDProductFile($productFileVO);
+    }
+
+    public function selectFindIDProduct($productVO){
+        $this->loadDAO();
+        return $this->productDAO->selectFindIDProduct($productVO);
+    }
+
+    public function selectFindIDProductFile($productFileVO){
+        $this->loadDAO();
+        return $this->productDAO->selectFindIDProductFile($productFileVO);
+    }
 
 }
 

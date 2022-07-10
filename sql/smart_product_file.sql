@@ -12,16 +12,20 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
--- 테이블 hr.smart_product 구조 내보내기
-CREATE TABLE IF NOT EXISTS `smart_product` (
-  `product_id` int(11) NOT NULL AUTO_INCREMENT,
-  `product_name` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+-- 테이블 hr.smart_product_file 구조 내보내기
+CREATE TABLE IF NOT EXISTS `smart_product_file` (
+  `product_id` int(11) DEFAULT NULL,
+  `uuid` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `root_dir` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `upload_dir` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `file_ext` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `file_size` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `original_name` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `file_name` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `file_type` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `regidate` datetime DEFAULT NULL,
-  `ip` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `project_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`product_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `ip` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- 내보낼 데이터가 선택되어 있지 않습니다.
 

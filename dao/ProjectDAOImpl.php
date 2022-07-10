@@ -28,6 +28,9 @@ class ProjectDAOImpl implements ProjectDAO{
 
     private $DELETE_FIND_UUID_PROJECT_FILE_QRY;
 
+    private $SELECT_All_PROJECT_COUNT_FIND_QRY;
+    private $SELECT_PAGING_PROJECT_FIND_QRY;
+
     private function loadQuery(){
 
         $this->SELECT_PROJECT_VIEW_QRY = "SELECT * FROM smart_project 
@@ -40,7 +43,7 @@ class ProjectDAOImpl implements ProjectDAO{
                                             LIMIT ? OFFSET ?";
                                     
         $this->SELECT_PROJECT_FULL_QRY = "SELECT * FROM smart_project 
-                                    WHERE project_name = ? AND 
+                                        WHERE project_name = ? AND 
                                         description = ? AND 
                                         startdate = ? AND 
                                         enddate = ? AND 
@@ -71,6 +74,14 @@ class ProjectDAOImpl implements ProjectDAO{
 
         $this->DELETE_FIND_UUID_PROJECT_FILE_QRY = "DELETE FROM smart_project_file 
                                                     WHERE uuid = ?";
+
+        $this->SELECT_All_PROJECT_COUNT_FIND_QRY = "SELECT COUNT(*) as 'cnt' FROM smart_project
+                                                    WHERE project_name like ?";
+
+        $this->SELECT_PAGING_PROJECT_FIND_QRY = "SELECT * FROM smart_project 
+                                                WHERE project_name like ? 
+                                                ORDER BY project_id desc 
+                                                LIMIT ? OFFSET ?";
 
     }
 
@@ -570,6 +581,91 @@ class ProjectDAOImpl implements ProjectDAO{
         //echo "참7 - 성공 <br>";
 
         return 1;
+
+    }
+
+    public function selectAllProjectCountFind($projectVO){
+
+        $my_conn = $this->getConn();
+        $result = null;
+        $rows = null;
+
+        $this->loadQuery();
+
+        if($my_conn != null ){
+            
+            $mysqlConn = $my_conn->getMysqli();
+            $stmt = $mysqlConn->prepare($this->SELECT_All_PROJECT_COUNT_FIND_QRY);
+            
+            $stmt->bind_param("s", $projectName);
+            $projectName = "%". $projectVO->getProject_name() . "%";
+
+            $stmt->execute();
+
+            $result = $stmt->get_result();
+            
+            if ( $result->num_rows == 1 ){
+                $rows = $result->fetch_assoc();
+            }
+
+            $stmt->close();
+
+        }
+
+        return $rows;
+
+    }
+
+    public function selectPagingProjectFind($startNum, $endNum, $projectVO){
+
+        $rows = null;
+        $my_conn = $this->getConn();
+        $result = null;
+
+        $this->loadQuery();
+
+        if ( $my_conn != null ){
+    
+            $mysqlConn = $my_conn->getMysqli();
+            $stmt = $mysqlConn->prepare($this->SELECT_PAGING_PROJECT_FIND_QRY);
+
+            //print_r($boardFileVO);
+
+            $stmt->bind_param("sii", 
+                                $projectName, 
+                                $_limnum, 
+                                $_startnum);
+            
+            $projectName = "%". $projectVO->getProject_name() . "%";
+            
+            // 오라클 페이징(자바 버전)
+	    	//paramMap.put("startnum", startnum);		
+    		//paramMap.put("endnum", endnum);			
+		
+            // mariaDB 페이징
+            if ( $startNum === 1) {
+                $_startnum = 0;
+            }
+            else {
+                $_startnum = $startNum - 1;
+            }
+            
+            $_limnum = ( $endNum - $startNum ) + 1;
+
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            while($row = $result->fetch_assoc()){
+                $rows[] = $row;
+            }
+            
+            
+        }else{
+            //echo "DB-거짓";
+        }
+
+        //return $boardArr;
+        return $rows;
 
     }
 

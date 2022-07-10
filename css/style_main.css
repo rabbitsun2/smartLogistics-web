@@ -288,3 +288,45 @@ a:hover{
 	border-top:2px solid #666;
     height: 30px;
 }
+
+.product_register_tbl{
+
+	width:40%; text-align:center;
+	border:1px solid #666;
+	border-collapse: collapse; 
+	border-spacing: 0;
+	text-align: center;
+}
+
+.product_register_tbl td{
+	border-top:2px solid #666;
+    height: 30px;
+}
+
+
+.product_list_detail_sub_title{
+	margin:10px;
+}
+
+.product_list_detail_sub_hr{
+	margin:10px;
+	background:#2E2E2E; 
+	padding-top:5px;
+	border:0px;
+}
+
+.product_list_detail_view_tbl{
+	width:100%; text-align:center;
+	border:1px solid #e2e2e2;
+	border-collapse: collapse; 
+	border-spacing: 0;
+	text-align: center;
+}
+
+.product_list_detail_view_tbl td{
+	border-top:2px solid #666;
+	border-collapse: collapse; 
+	border-spacing: 0;
+	text-align: center;
+	height: 20px;
+}

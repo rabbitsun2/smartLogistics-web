@@ -17,6 +17,14 @@ interface ProductService{
     public function selectAllProductCount();
     public function selectPagingProduct($startNum, $endNum);
 
+    public function selectFullProductQry($productVO);
+    public function insertProduct($productVO);
+    public function insertProductFile($productFileVO);
+
+    public function selectFindUUIDProductFile($productFileVO);
+    public function selectFindIDProduct($productVO);
+    public function selectFindIDProductFile($productFileVO);
+
 }
 
 ?>

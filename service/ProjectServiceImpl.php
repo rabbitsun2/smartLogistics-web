@@ -98,6 +98,16 @@ class ProjectServiceImpl implements ProjectService{
         return $this->projectDAO->deleteFindUUIDProjectFile($projectFileVO);
     }
 
+    public function selectAllProjectCountFind($projectVO){
+        $this->loadDAO();
+        return $this->projectDAO->selectAllProjectCountFind($projectVO);
+    }
+
+    public function selectPagingProjectFind($startNum, $endNum, $projectVO){
+        $this->loadDAO();
+        return $this->projectDAO->selectPagingProjectFind($startNum, $endNum, $projectVO);
+    }
+
 }
 
 ?>

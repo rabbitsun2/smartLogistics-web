@@ -1,4 +1,29 @@
 {include file="header.tpl"}
+
+
+	<script type="text/javascript">
+	  	var openWin;
+
+		function openChild(id){
+
+			var popupWidth = 680;
+			var popupHeight = 350;
+
+			var popupX = (window.screen.width / 2) - (popupWidth / 2);
+			// 만들 팝업창 width 크기의 1/2 만큼 보정값으로 빼주었음
+
+			var popupY= (window.screen.height / 2) - (popupHeight / 2);
+			// 만들 팝업창 height 크기의 1/2 만큼 보정값으로 빼주었음
+
+	    	// window.name = "부모창 이름";
+			window.name = "parentForm";
+			// window.open("open할 window", "자식창 이름", "팝업창 옵션");
+			openWin = window.open("product?func=list&id=" + id + "&option=detail_view" ,
+		        "childForm", "width=" + popupWidth + ", height=" + popupHeight + 
+				"left="+ popupX + ", top=" + popupY + ", resizable = no, scrollbars = no");
+		}
+
+	</script>
 				<h3 class="sub_title">프로젝트(제품) / 제품 현황</h3>
 				<hr class="sub_hr">
 
@@ -15,7 +40,7 @@
 				설명
 			</th>
 			<th>
-				사진
+				기능
 			</th>
 			<th>
 				등록일자
@@ -35,7 +60,7 @@
 				{$u_item.description}
 			</td>
 			<td>
-				<img src="../../pjt/images/{$u_item.product_no}.png" alt="{$u_item.description}" style="width:120px;height:120px;">
+				<a href="#" onclick="openChild({$u_item.product_no})">상세보기</a>
 			</td>
 			<td>
 				{$u_item.regidate}

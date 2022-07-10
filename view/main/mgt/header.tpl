@@ -87,6 +87,11 @@
 									<a href="product?func=list">제품 현황</a>
 								</div>
 							</li>
+							<li>
+								<div class="sub_m1">
+									<a href="product?func=register">제품 등록</a>
+								</div>
+							</li>
 						</ul>
 					</li>
 				</ul>

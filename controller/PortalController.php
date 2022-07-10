@@ -352,17 +352,243 @@ class PortalController extends Controller {
         
         if ( strcmp( $_GET['func'], 'list' ) === 0 ){
             
-            $pageCri = new PageCriteria();
-
-            // 페이지 설정
-            if ($_GET['page'] >= 0 &&
-                is_numeric($_GET['page'])){
+            
+            // 프로젝트 목록 페이지
+            if ( !isset($_GET['id']) && 
+                 !isset($_GET['option'])){
                 
-                $pageCri->setPage($_GET['page']);
+                $pageCri = new PageCriteria();
+
+                // 페이지 설정
+                if ($_GET['page'] >= 0 &&
+                    is_numeric($_GET['page'])){
+                    
+                    $pageCri->setPage($_GET['page']);
+
+                }
+                
+                $this->productController->product_list($pageCri);
+
+            }
+            // 프로젝트 상세 보기 페이지
+            else if ( isset($_GET['id']) && 
+                isset($_GET['option']) && 
+                strcmp($_GET['option'], 'detail_view') === 0 ){
+                
+                $productVO = new ProductVO();
+                $productVO->setProduct_id($_GET['id']);
+
+                $this->productController->product_list_detail_view($productVO);
 
             }
             
-            $this->productController->product_list($pageCri);
+
+        }
+
+        else if ( strcmp( $_GET['func'], 'register' ) === 0 ){
+            
+            // 프로젝트 등록 페이지
+            if (!isset($_POST['func'])){
+                $this->productController->product_register();
+            }
+            // 프로젝트 등록 처리 프로세스
+            else if (isset($_POST['func']) && 
+                    isset($_POST['srtype']) &&
+                    strcmp($_POST['func'], 'input') === 0 &&
+                    strcmp($_POST['srtype'], 'submit') === 0){
+
+                $status = 1;
+                $file_chk = "NORMAL";
+
+                $productFileArr = array();
+
+                $dt = new DateTime('NOW');
+                $dt = $dt->format('Y-m-d H:i:s');
+
+                //echo $dt;
+                
+                $productVO = new ProductVO();
+
+                // 프로젝트 번호 입력
+                if ( isset($_POST['project_id']) && 
+                    strcmp($_POST['project_id'], "") !== 0){
+                    $productVO->setProject_id($_POST['project_id']);
+                }
+                else if ( isset($_POST['project_id']) && 
+                        strcmp($_POST['project_id'], "") === 0 ){
+                    $productVO->setProject_id(-1);
+                    $status = -1;
+                }
+
+                // 제품명 입력
+                if ( isset($_POST['product_name']) &&
+                    strcmp($_POST['product_name'], "") !== 0){
+                    $productVO->setProduct_name($_POST['product_name']);
+                }
+                else if ( isset($_POST['product_name']) &&
+                    strcmp($_POST['product_name'], "") === 0){
+                    $productVO->setProduct_name(-1);
+                    $status = -2;
+                }
+
+                // 설명 입력
+                if ( isset($_POST['description']) &&
+                    strcmp($_POST['description'], "") !== 0){
+                    $productVO->setDescription($_POST['description']);
+                }
+                else if ( isset($_POST['description']) &&
+                    strcmp($_POST['description'], "") === 0){
+                    $productVO->setDescription(-1);
+                    $status = -3;
+                }
+
+                // 등록일자
+                $productVO->setRegidate($dt);
+                                
+                // IP주소
+                $productVO->setIp(Network::get_client_ip());
+
+                // 파일 옵션
+                $productVO->setFile_option("NORMAL");
+
+                if ( $status === 1 ){
+
+                    // 파일 업로드
+                    foreach($_FILES['usrupload']['name'] as $f => $name){
+
+                        $productFileVO = new ProductFileVO();
+
+                        $root_dir = $this->getRootDir();
+                        $upload_dir = $this->getUploadDir() . "/product";
+                        $uuid = UUID::v4();
+                        $upload_dir_fullpath = $root_dir . $upload_dir;
+                        $upload_dir_uuid_fullpath = $upload_dir_fullpath . "/" . $uuid;
+
+                        $name = $_FILES['usrupload']['name'][$f];
+                        $uploadName = explode('.', $name);
+
+                        $fileName = time(). $f . "." . $uploadName[1];
+                        $uploadRealName = $upload_dir_uuid_fullpath . "/" . $fileName;
+                        $originalName = $_FILES['usrupload']['name'][$f];
+                        $fileSize = $_FILES['usrupload']['size'][$f];
+                        $fileExt = $uploadName[1];
+                        $fileType = $_FILES['usrupload']['type'][$f];
+                        
+                        //echo $fileName . ",";
+                        //echo $originalName. "," . $fileSize . "," . $fileExt . "," . $fileType . "<br>";
+
+                        //echo $uploadRealName;
+
+                        // 파일 정보 입력
+                        $productFileVO->setUuid($uuid);
+                        $productFileVO->setRoot_dir($root_dir);
+                        $productFileVO->setUpload_dir($upload_dir);
+                        $productFileVO->setFile_ext($fileExt);
+                        $productFileVO->setFile_size($fileSize);
+                        $productFileVO->setOriginal_name($originalName);
+                        $productFileVO->setFile_name($fileName);
+                        $productFileVO->setFile_type($fileType);
+                        $productFileVO->setRegidate($dt);
+                        $productFileVO->setIp(Network::get_client_ip());
+                        
+
+                        //echo $fileExt . "/" . FileUtil::checkFileExtAllowPhoto($fileExt) . "<br>";
+
+                        //echo $uploadName;
+
+                        if ( ( strcmp( $file_chk, "NORMAL") === 0 && 
+                              FileUtil::checkFileExtRestrict($fileExt) === 1 ) || 
+                              FileUtil::checkFileExtAllowPhoto($fileExt) === 0 ) {
+                            $file_chk = "RESTRICT";
+                            $productVO->setFile_option("RESTRICT");
+                        }
+
+                        
+                        if ( strcmp( $file_chk, "NORMAL") === 0 &&
+                                $this->getUploadSize() < $fileSize){
+                            $file_chk = "RESTRICT";
+                            $productVO->setFile_option("RESTRICT");
+                        }
+
+                        //echo $file_chk;
+
+
+                        // 파일 서버 전송
+                        if ( strlen($originalName) != 0 && 
+                            strcmp( $file_chk, "RESTRICT" ) !== 0 ){
+                            
+                            if(!is_dir( $upload_dir_fullpath )){
+                                mkdir( $upload_dir_fullpath );
+                            }
+
+                            if(!is_dir( $upload_dir_uuid_fullpath )){
+                                mkdir( $upload_dir_uuid_fullpath );
+                            }
+
+                            if (move_uploaded_file($_FILES['usrupload']['tmp_name'][$f], $uploadRealName)){
+                                //echo "success";
+
+                                /*
+                                // 파일 삭제
+                                if ( is_file($uploadRealName) ){
+                                    unlink($uploadRealName);
+                                }
+
+                                // 폴더 삭제
+                                rmdir($upload_dir_uuid_fullpath);   // 임시 삭제
+                                */
+                                $productFileVO->setOption("success");
+
+                            }else{
+                                //echo "error";
+                                $productFileVO->setOption("error");
+                            }
+
+                        }
+
+                        // 파일정보 배열로 입력
+                        if(strlen($originalName) != 0 && 
+                            strcmp( $file_chk, "RESTRICT") !== 0){
+                            //echo "참";
+                            array_push($productFileArr, $productFileVO);
+                        }
+
+                    }
+
+                }
+                
+                $this->productController->product_register_ok($productVO, $productFileArr);   
+
+            }
+
+        }
+        else if ( strcmp( $_GET['func'], 'input' ) === 0 ){
+            #echo "참1" . "/" . isset($_GET['search']);
+
+            // 프로젝트 코드 찾기
+            if ( isset($_GET['search']) &&
+                     strcmp($_GET['search'], 'project') === 0 &&
+                     !isset($_GET['keyword']) ){
+                $this->productController->project_search();
+            }
+            // 품목 코드 검색 결과 출력
+            else if ( isset($_GET['search']) &&
+                     strcmp($_GET['search'], 'project') === 0 &&
+                      isset($_GET['keyword']) ){
+
+                $pageCri = new PageCriteria();
+
+                // 페이지 설정
+                if ($_GET['page'] >= 0 &&
+                    is_numeric($_GET['page'])){
+                    
+                    $pageCri->setPage($_GET['page']);
+
+                }
+
+                $this->productController->project_search_result( $pageCri, $_GET['keyword'] );
+
+            }
 
         }
 
